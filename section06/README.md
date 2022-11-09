@@ -70,7 +70,7 @@
 
 ![image](https://user-images.githubusercontent.com/116566498/200875177-7eea5575-53a0-4f4b-8cc0-824dadd49b7d.png)
 
-Проверяем данные
+Запускаем psql и проверяем данные
 > select * from test;
 
 Данные на месте
