@@ -58,9 +58,9 @@ sudo pg_ctlcluster 14 main start
 
 Создаем новый кластер с включенной контрольной суммой страниц
 
-> sudo pg_createcluster 14 main1 -- --data-checksums
+> sudo pg_createcluster 14 main -- --data-checksums
 
-> sudo pg_ctlcluster 14 main1 start
+> sudo pg_ctlcluster 14 main start
 
 Создаем базу, таблицу и наполняем ее данными. Затем изменяем в файле таблицы один байт данных и запускаем кластер.
 
