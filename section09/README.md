@@ -84,6 +84,10 @@ sudo pg_ctlcluster 14 main start
 
 Записи выведены, но видно, что последовательгость строк нарушена.
 
+Также можно вывести число ошибок проверки контрольных сумм
+
+![image](https://user-images.githubusercontent.com/116566498/203330596-c9676d63-9bb5-4cad-90fc-8eae898f0085.png)
+
 
 
 
