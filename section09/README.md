@@ -56,6 +56,8 @@ sudo pg_ctlcluster 14 main start
 
 Параметр tps увеличился в несколько раз. В режиме off отсутствует ожидание записи транзакций журнала WAL на диск.
 
+## Включенние контрольной суммой страниц
+
 Создаем новый кластер с включенной контрольной суммой страниц
 
 > sudo pg_createcluster 14 main -- --data-checksums
@@ -70,7 +72,19 @@ sudo pg_ctlcluster 14 main start
 
 ![image](https://user-images.githubusercontent.com/116566498/202857169-02ab441a-de44-44e8-b345-ba79a7c707df.png)
 
-Не получилось включить параметр ignore_checksum_failure
+Включаем параметр, позволяющий игнорировать проверку контрольных сумм в таблицах
+
+> ALTER SYSTEM SET ignore_checksum_failure = off;
+
+> select pg_reload_conf();
+
+Выполняем снова запрос и делаем скриншот результата
+
+![image](https://user-images.githubusercontent.com/116566498/203328683-fb9824ca-d6f7-498b-bddb-7fb5b5184d04.png)
+
+Записи выведены, но видно, что последовательгость строк нарушена.
+
+
 
 
 
