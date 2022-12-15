@@ -85,5 +85,44 @@ PUBLICATION cluster2 WITH (copy_data = true);
 
 Видим, что данные таблиц среплицированы.
 
+## Репликация cluster1, cluster2 -> cluster3
+
+Создадим третий кластер main2 и настроим репликацию таблиц test, test2 с помощью публикаций, которые мы уже создали
+
+> sudo pg_createcluster 14 main2
+
+> sudo pg_ctlcluster 14 main2 start
+
+> sudo -u postgres psql -p 5434
+
+> CREATE DATABASE cluster3;
+
+>  \c cluster3;
+
+> create table test (id integer, fio char(10));
+
+> create table test2 (id integer, fio char(10));
+
+> ALTER SYSTEM SET wal_level = logical;
+
+> sudo pg_ctlcluster 14 main2 restart
+
+Исходное состояние:
+
+![image](https://user-images.githubusercontent.com/116566498/207869402-d114e6d1-752d-4bd3-a6d1-14629c11df0e.png)
+
+> CREATE SUBSCRIPTION test_sub1 
+CONNECTION 'host=localhost port=5432 user=postgres password=postgres dbname=cluster1' 
+PUBLICATION cluster1 WITH (copy_data = true);
+
+> CREATE SUBSCRIPTION test_sub2 
+CONNECTION 'host=localhost port=5433 user=postgres password=postgres dbname=cluster2' 
+PUBLICATION cluster2 WITH (copy_data = true);
+
+Смотрим результат
+
+![image](https://user-images.githubusercontent.com/116566498/207871046-56548d58-4eb8-44d8-b3a1-2b3c1204aafb.png)
+
+Данные таблиц скопировались в базу данных cluster3
 
 
