@@ -42,6 +42,7 @@
 > CREATE INDEX flights_departure_airport_idx ON bookings.flights (departure_airport);
 
 Повторно выполним запрос и посмотрим на результат:
+
 ![image](https://user-images.githubusercontent.com/116566498/210941025-53c3a285-bf09-4272-b0e8-31da542c82bc.png)
 
 Видим, что теперь для выборки строк используется индекс.
