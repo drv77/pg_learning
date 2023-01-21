@@ -46,6 +46,12 @@
 
 ![image](https://user-images.githubusercontent.com/116566498/213843985-b580c511-127b-46ae-abcd-fc38356dbac9.png)
 
+> SELECT show_chunks('flights');
+
+![image](https://user-images.githubusercontent.com/116566498/213844110-7f8baf80-7c82-4eba-a257-678773744e58.png)
+
+
+
 
 
 
